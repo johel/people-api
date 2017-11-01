@@ -20,7 +20,6 @@ exports.create = function(req, res, next) {
     console.log('result on creation', result);
     return res.status(201).json({data:result.toClient()});
   }, err => {
-    console.log('error - person creation', err);
     return res.status(400).json({error:err.message});
   }).catch( err => {
     return res.status(500).json({error:"Unexpected Error"});
