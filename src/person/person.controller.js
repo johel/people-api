@@ -18,8 +18,8 @@ exports.create = function(req, res, next) {
   });
 
   person.save().then(result => {
-    console.log('result on person creation', result);
-    return res.status(201).json({data:result});
+    console.log('result.id', result.id);
+    return res.status(201).json({data:result.toClient()});
   }, err => {
     console.log('error - person creation', err);
     return res.status(500).json({error:"Unexpected Error"});
