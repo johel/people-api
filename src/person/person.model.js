@@ -1,13 +1,9 @@
 const mongoose = require('mongoose');
 const autoIncrement = require('mongoose-auto-increment');
-
-const ContactSchema = mongoose.Schema({
-  uid: 'string',
-  type: {type: 'string'},
-  value: {type:'string'},
-}, {
-	_id: false
-});
+const ContactSchema = require('./contact.schema');
+const _ = require('lodash');
+const uid = require('uid-safe');
+const StringUtils = require('../utils/string');
 
 const personSchema = new mongoose.Schema({
   name: 'string',
@@ -30,6 +26,17 @@ personSchema.set('toJSON', {
   virtuals: true
 });
 
+//HOOKS
+personSchema.pre('save', function(next) {
+  let person = this;
+  try{
+  	person.name = StringUtils.titleCase(person.name);
+  }catch(err){
+  	return next(err);
+  }
+  
+  next();
+});
 
 //***INTANCE METHODS***
 
@@ -45,8 +52,18 @@ personSchema.method('toClient', function() {
   return obj;
 });
 
+function insertPersonContact(person, newContact){
+  let doesContactValueExist = person.contacts.find(item => item.value == newContact.value);
+  if(!doesContactValueExist){
+    let contactToInsert = Object.assign(newContact, {uid:uid.sync(18)});
+    person.contacts.push(contactToInsert);
+  }
+}
 
-//VALIDATIONS
+personSchema.methods.insertContact = function insertContact (newContact) {
+  let person = this;
+  insertPersonContact(person, newContact);
+};
 
 
 // Create the model class
