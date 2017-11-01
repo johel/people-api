@@ -5,11 +5,15 @@ const ContactSchema = mongoose.Schema({
   uid: 'string',
   type: {type: 'string'},
   value: {type:'string'},
-}, {_id: false});
+}, {
+	_id: false
+});
 
 const personSchema = new mongoose.Schema({
   name: 'string',
   contacts: [ContactSchema]
+}, {
+	timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' }
 });
 
 personSchema.plugin(autoIncrement.plugin, 'Person');
