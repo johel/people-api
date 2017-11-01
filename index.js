@@ -5,16 +5,11 @@ const config = require('./config');
 
 // DB Setup
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 const autoIncrement = require('mongoose-auto-increment');
-console.log(config.db);
-
-//deprecated -> must set useMongoClient: true 
-const connection = mongoose.connect(config.db);
-
-// todo: resolve double collon problem
-// const connection = mongoose.createConnection(config.db, {
-// 	useMongoClient: true
-// });
+const connection = mongoose.createConnection(config.db, {
+	useMongoClient: true
+});
 
 autoIncrement.initialize(connection);
 

@@ -2,7 +2,7 @@
 	'use strict'
 
 	module.exports = {
-		db: 'mongodb://localhost:api-pessoas-prod',
+		db: 'mongodb://localhost:people/people-prod',
 		port:3090
 	};
 
