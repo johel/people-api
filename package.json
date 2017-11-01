@@ -1,0 +1,27 @@
+{
+  "name": "api-pessoas",
+  "version": "1.0.0",
+  "description": "api de cadastro de pessoas e contatos da pessoa para o processo seletivo da bravi",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "johel carvalho",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "helmet": "^3.9.0",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.12.5",
+    "mongoose-auto-increment": "^5.0.1",
+    "morgan": "^1.9.0",
+    "superagent": "^3.8.0"
+  }
+}
