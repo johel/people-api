@@ -7,9 +7,7 @@ const config = require('./config');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const autoIncrement = require('mongoose-auto-increment');
-const connection = mongoose.createConnection(config.db, {
-	useMongoClient: true
-});
+const connection = mongoose.connect(config.db);
 
 autoIncrement.initialize(connection);
 
