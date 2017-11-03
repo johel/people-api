@@ -9,6 +9,7 @@ e contatos, imaginei que os contatos estariam sempre atrelados ao contexto de um
 em que se pode adicionar múltiplos contatos dinamicamente. A quantidade de contatos de uma pessoa, considerou-se
 de tamanho irrelevante, não considerando danoso à performance operações de update do documento
 estarem sempre atrelados à pessoa.
+Diante dessas considerações, optou-se propopositalmente por não criar métodos http que trouxessem apenas um contato ou a lista de todos os contatos de todas as pessoas. Isso porque ambas listagens podem ser facilmente obtidas, através da listagem de uma ou mais pessoas. No caso do update,delete e insert de contacts, considerou-se que esses métodos facilitariam consideravelmente o trabalho do backend.
 
 Na aplicação também procurou-se reproduzir configuração diferentes para os ambientes de desenvolvimento e testes.
 
